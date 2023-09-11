@@ -1,5 +1,5 @@
 import React from "react";
-import {Input} from './input/index';
+import {Input} from './input/Input';
 
 
 class App extends React.Component {
@@ -11,9 +11,20 @@ class App extends React.Component {
     
   }
 
+  handleChange = (e) => {
+
+     const {name,value} = e.target;
+      this.setState({
+
+         [name]:value
+      })
+
+  }
+
 
   render() {
 
+     const {contacts,name} = this.state;
     return (
       <div
         style={{
@@ -21,13 +32,15 @@ class App extends React.Component {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          fontSize: 40,
-          color: '#010101'
+          fontSize: 20,
+          color: '#010101',
+          flexDirection:'column'
         }}
       >
-        React homework template
+      <h1>Phonebook</h1>
+        <Input name={name} onChange={this.handleChange}/>
+        <h2>Contacts</h2>
 
-        <Input />
       </div>
     );
 
