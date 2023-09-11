@@ -1,30 +1,42 @@
-import React from "react";
-import {Input} from './input/Input';
-
+import React from 'react';
+import { Input } from './input/Input';
+import Contacts from './contacts/contacts';
+import { nanoid } from 'nanoid';
 
 class App extends React.Component {
-
   state = {
-
     contacts: [],
-    name: ''
+    name: '',
+  };
+
+  handleChange = e => {
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value,
+    });
+  };
+
+  handleSubmit = e => {
+
+    e.preventDefault();
+    const contactId = nanoid();
+    const contact = {
+      id: contactId,
+      name: this.state.name,
+    };
+
+    this.setState((prevState) => ({
     
-  }
+        contacts: [...prevState.contacts,contact],
+        name: ""
+      }));
 
-  handleChange = (e) => {
-
-     const {name,value} = e.target;
-      this.setState({
-
-         [name]:value
-      })
-
-  }
-
+   
+    };
+ 
 
   render() {
-
-     const {contacts,name} = this.state;
+    const { contacts, name } = this.state;
     return (
       <div
         style={{
@@ -34,19 +46,20 @@ class App extends React.Component {
           alignItems: 'center',
           fontSize: 20,
           color: '#010101',
-          flexDirection:'column'
+          flexDirection: 'column',
         }}
       >
-      <h1>Phonebook</h1>
-        <Input name={name} onChange={this.handleChange}/>
+        <h1>Phonebook</h1>
+        <Input
+          name={name}
+          onChange={this.handleChange}
+          onSubmit={this.handleSubmit}
+        />
         <h2>Contacts</h2>
-
+        <Contacts contacts={contacts} />
       </div>
     );
-
   }
- 
-};
-
+}
 
 export default App;
