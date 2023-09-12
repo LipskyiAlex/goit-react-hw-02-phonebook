@@ -1,5 +1,5 @@
 
-export const Input = ({name,onChange,onSubmit}) => {
+export const Input = ({name,number,onChange,onSubmit}) => {
 
 
 return (
@@ -12,8 +12,15 @@ return (
     required
     value={name}
     onChange={onChange}
-    
   />
+  <input
+  type="tel"
+  name="number"
+  title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+  required
+  value={number}
+  onChange={onChange}
+/>
   <button type="submit" >Add to contacts</button>
    </form>)
  
@@ -25,4 +32,5 @@ return (
 
 
 
-// pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+// pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"    this is for name
+// pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"  this is for number
