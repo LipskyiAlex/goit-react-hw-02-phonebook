@@ -1,13 +1,16 @@
-const Contacts = ({ contacts }) => {
+const Contacts = ({ contacts, filter}) => {
   return (
-    <ul>
-      {contacts.map(({ id, contact, number }) => (
-        <li key={id}>
-          <p>{contact}</p>
-          <p>{number}</p>
-        </li>
-      ))}
-    </ul>
+    <div>
+      
+      <ul>
+        {contacts.filter(({contact}) => contact.toLowerCase().includes(filter.toLowerCase())).map(({ id, contact, number }) => (
+          <li key={id}>
+            <p>{contact}</p>
+            <p>{number}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 
