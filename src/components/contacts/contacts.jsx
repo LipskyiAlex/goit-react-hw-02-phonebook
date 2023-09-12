@@ -7,9 +7,9 @@ const Contacts = ({contacts}) => {
 
       
       <ul>
-      {contacts.map(element => (
+      {contacts.map(({id,contact}) => (
          
-         <li><p>{element.name}</p></li>
+         <li key={id}><p>{contact}</p></li>
 
       ))}
       </ul>

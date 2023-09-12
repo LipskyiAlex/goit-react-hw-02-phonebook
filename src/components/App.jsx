@@ -20,9 +20,10 @@ class App extends React.Component {
 
     e.preventDefault();
     const contactId = nanoid();
+     console.log(contactId);
     const contact = {
       id: contactId,
-      name: this.state.name,
+      contact: this.state.name,
     };
 
     this.setState((prevState) => ({
