@@ -1,22 +1,14 @@
-
-
-
-const Contacts = ({contacts}) => {
-
-    return (
-
-      
-      <ul>
-      {contacts.map(({id,contact}) => (
-         
-         <li key={id}><p>{contact}</p></li>
-
+const Contacts = ({ contacts }) => {
+  return (
+    <ul>
+      {contacts.map(({ id, contact, number }) => (
+        <li key={id}>
+          <p>{contact}</p>
+          <p>{number}</p>
+        </li>
       ))}
-      </ul>
-
-    )
-
-
-}
+    </ul>
+  );
+};
 
 export default Contacts;

@@ -7,10 +7,11 @@ class App extends React.Component {
   state = {
     contacts: [],
     name: '',
+    number: ''
   };
 
   handleChange = e => {
-    const { name, value } = e.target;
+    const { name,value } = e.target;
     this.setState({
       [name]: value,
     });
@@ -20,10 +21,10 @@ class App extends React.Component {
 
     e.preventDefault();
     const contactId = nanoid();
-     console.log(contactId);
     const contact = {
       id: contactId,
       contact: this.state.name,
+      number: this.state.number
     };
 
     this.setState((prevState) => ({
@@ -37,7 +38,7 @@ class App extends React.Component {
  
 
   render() {
-    const { contacts, name } = this.state;
+    const { contacts, name, number } = this.state;
     return (
       <div
         style={{
@@ -53,6 +54,7 @@ class App extends React.Component {
         <h1>Phonebook</h1>
         <Input
           name={name}
+          number={number}
           onChange={this.handleChange}
           onSubmit={this.handleSubmit}
         />
