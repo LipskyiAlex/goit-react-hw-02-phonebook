@@ -1,36 +1,54 @@
+import styled from '@emotion/styled';
 
-export const Input = ({name,number,onChange,onSubmit}) => {
+
+import { Formik,Form,Field,ErrorMessage } from 'formik';
+import * as yup from 'yup';
 
 
-return (
+// const In = styled(Field)`
 
-<form onSubmit={onSubmit}>
-<input
-    type="text"
-    name="name"
-    title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-    required
-    value={name}
-    onChange={onChange}
-  />
-  <input
-  type="tel"
-  name="number"
-  title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-  required
-  value={number}
-  onChange={onChange}
-/>
-  <button type="submit">Add to contacts</button>
-   </form>)
+//  color: tomato;
+// `
+
+const schema = yup.object().shape({
+
+  name: yup.string().min(3).max(32).required(),
+  number: yup.number().required()
+})
+
+
+
+
+const Input = ({onSubmit}) => {
+
+  const initialValues = {
+
+    name: '',
+    number: ''
  
+ }
+  return (
+    <Formik initialValues={initialValues} validationSchema={schema} onSubmit={onSubmit}>
+      <Form>
+        <Field
+          type="text"
+          name="name"
+          placeholder="name"
+          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+        />
+        <ErrorMessage name="name" component='div' />
+        <Field
+          type="tel"
+          name="number"
+          placeholder="number"
+          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+        />
+          <ErrorMessage name="number" component='div' />
+        <button type="submit">Add to contacts</button>
+      </Form>
+    </Formik>
+  );
+};
 
-}
+export default Input;
 
-
-
-
-
-
-// pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"    this is for name
-// pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"  this is for number
