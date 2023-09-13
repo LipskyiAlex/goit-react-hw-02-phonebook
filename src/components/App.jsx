@@ -3,6 +3,7 @@ import { Input } from './input/Input';
 import Contacts from './contacts/contacts';
 import Filter from './filter/filter';
 import { nanoid } from 'nanoid';
+import Notiflix from 'notiflix';
 
 class App extends React.Component {
   state = {
@@ -28,14 +29,25 @@ class App extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     const contactId = nanoid();
-    const contact = {
+    const newContact = {
       id: contactId,
       contact: this.state.name,
       number: this.state.number,
     };
+     
+       for(let name of this.state.contacts) {
+
+             const {contact} = name;
+  
+             if(newContact.contact.toLowerCase() === contact.toLowerCase()) {
+        
+               return Notiflix.Notify.failure(`${contact} is already in contacts`);
+             }
+
+       }
 
     this.setState(prevState => ({
-      contacts: [...prevState.contacts, contact],
+      contacts: [...prevState.contacts, newContact],
       name: '',
     }));
   };
