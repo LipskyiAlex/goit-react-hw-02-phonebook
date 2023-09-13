@@ -52,10 +52,7 @@ class App extends React.Component {
     }));
   };
 
-  handleFilter = e => {
 
-
-  }
   render() {
     const { contacts, name, number ,filter } = this.state;
     return (
