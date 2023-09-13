@@ -21,7 +21,7 @@ return (
   value={number}
   onChange={onChange}
 />
-  <button type="submit" >Add to contacts</button>
+  <button type="submit">Add to contacts</button>
    </form>)
  
 

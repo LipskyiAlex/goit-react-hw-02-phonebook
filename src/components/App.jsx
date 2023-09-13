@@ -8,10 +8,10 @@ import Notiflix from 'notiflix';
 class App extends React.Component {
   state = {
     contacts: [
-      {id: 'id-1', contact: 'Rosie Simpson', number: '459-12-56'},
-      {id: 'id-2', contact: 'Hermione Kline', number: '443-89-12'},
-      {id: 'id-3', contact: 'Eden Clements', number: '645-17-79'},
-      {id: 'id-4', contact: 'Annie Copeland', number: '227-91-26'},
+      { id: 'id-1', contact: 'Rosie Simpson', number: '459-12-56' },
+      { id: 'id-2', contact: 'Hermione Kline', number: '443-89-12' },
+      { id: 'id-3', contact: 'Eden Clements', number: '645-17-79' },
+      { id: 'id-4', contact: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
     name: '',
@@ -23,7 +23,6 @@ class App extends React.Component {
     this.setState({
       [name]: value,
     });
-
   };
 
   handleSubmit = e => {
@@ -34,17 +33,13 @@ class App extends React.Component {
       contact: this.state.name,
       number: this.state.number,
     };
-     
-       for(let name of this.state.contacts) {
 
-             const {contact} = name;
-  
-             if(newContact.contact.toLowerCase() === contact.toLowerCase()) {
-        
-               return Notiflix.Notify.failure(`${contact} is already in contacts`);
-             }
-
-       }
+    for (let name of this.state.contacts) {
+      const { contact } = name;
+      if (newContact.contact.toLowerCase() === contact.toLowerCase()) {
+        return Notiflix.Notify.failure(`${contact} is already in contacts`);
+      }
+    }
 
     this.setState(prevState => ({
       contacts: [...prevState.contacts, newContact],
@@ -53,8 +48,18 @@ class App extends React.Component {
   };
 
 
+  handleDelete = (contactId) => {
+
+      this.setState(prevState => ({
+      
+      contacts: prevState.contacts.filter(contact => contact.id!==contactId)
+
+      }));
+
+  }
+
   render() {
-    const { contacts, name, number ,filter } = this.state;
+    const { contacts, name, number, filter } = this.state;
     return (
       <div
         style={{
@@ -73,10 +78,11 @@ class App extends React.Component {
           number={number}
           onChange={this.handleChange}
           onSubmit={this.handleSubmit}
+         
         />
         <h2>Contacts</h2>
-        <Filter filter={filter} onChange={this.handleChange}/>
-        <Contacts contacts={contacts} filter={filter}/>
+        <Filter filter={filter} onChange={this.handleChange} />
+        <Contacts contacts={contacts} filter={filter}  onDelete = {this.handleDelete} />
       </div>
     );
   }
