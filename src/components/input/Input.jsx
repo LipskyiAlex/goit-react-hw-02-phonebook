@@ -2,7 +2,7 @@
 
 import { Formik,Form,Field,ErrorMessage } from 'formik';
 import * as yup from 'yup';
-import { FormWrapper,FormInput } from './imput.styled';
+import { FormWrapper,FormInput,Button} from './imput.styled';
 
 
 const schema = yup.object().shape({
@@ -39,7 +39,7 @@ const Input = ({onSubmit}) => {
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
         />
           <ErrorMessage name="number" component='div' />
-        <button type="submit">Add to contacts</button>
+        <Button type="submit">Add to contacts</Button>
       </FormWrapper>
     </Formik>
   );

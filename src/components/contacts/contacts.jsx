@@ -1,22 +1,25 @@
+
+import {List,Item,Button} from './contacts.styled';
+
 const Contacts = ({ contacts, filter, onDelete }) => {
   return (
-    <div>
-      <ul>
+    <>
+      <List>
         {contacts
           .filter(({ contact }) =>
             contact.toLowerCase().includes(filter.toLowerCase())
           )
           .map(({ id, contact, number }) => (
-            <li key={id}>
+            <Item key={id}>
               <p>{contact}</p>
               <p>{number}</p>
-              <button type="button" onClick={() => onDelete(id)}>
+              <Button type="button" onClick={() => onDelete(id)}>
                 Delete
-              </button>
-            </li>
+              </Button>
+            </Item>
           ))}
-      </ul>
-    </div>
+      </List>
+    </>
   );
 };
 
