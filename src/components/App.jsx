@@ -4,8 +4,6 @@ import Contacts from './contacts/contacts';
 import Filter from './filter/filter';
 import { nanoid } from 'nanoid';
 import Notiflix from 'notiflix';
-// import { Formik,Form,Field } from 'formik';
-
 
 class App extends React.Component {
   state = {
