@@ -5,6 +5,7 @@ import Filter from './filter/filter';
 import { nanoid } from 'nanoid';
 import Notiflix from 'notiflix';
 
+
 class App extends React.Component {
   state = {
     contacts: [
