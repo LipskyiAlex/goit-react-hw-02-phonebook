@@ -8,7 +8,7 @@ import { FormWrapper,FormInput,Button} from './imput.styled';
 const schema = yup.object().shape({
 
   name: yup.string().min(3).max(32).required(),
-  number: yup.number().required()
+  number: yup.number().min(3).max(12).required()
 })
 
 
