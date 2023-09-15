@@ -14,15 +14,7 @@ export const Item = styled.li`
 display:flex;
 align-items:center;
 justify-content: space-between;
-`
-
-export const Button = styled.button`
-
-width:70px;
-
-display:flex;
-justify-content:center;
-
+margin-bottom:10px;
 `
 
 export const EmptyList = styled.p`

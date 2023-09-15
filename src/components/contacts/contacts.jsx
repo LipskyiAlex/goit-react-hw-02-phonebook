@@ -1,7 +1,7 @@
 import {AiFillDelete} from "react-icons/ai";
-import {FcContacts} from "react-icons/fc";
+import {FcBusinessContact} from "react-icons/fc";
 import {BsTelephoneOutbound} from 'react-icons/bs';
-import {List,Item,Button,EmptyList,Contact,Number,Wrapper} from './contacts.styled';
+import {List,Item,EmptyList,Contact,Number,Wrapper} from './contacts.styled';
 
 const Contacts = ({ contacts, filter, onDelete }) => {
   return (
@@ -15,16 +15,16 @@ const Contacts = ({ contacts, filter, onDelete }) => {
           .map(({ id, contact, number }) => (
             <Item key={id}>
               <Wrapper>
-              <FcContacts size={20} />
+              <FcBusinessContact size={20} />
               <Contact> {contact}</Contact>
               </Wrapper>
               <Wrapper>
               <BsTelephoneOutbound size={20} />
               <Number>{number}</Number>
               </Wrapper>
-              <Button type="button" onClick={() => onDelete(id)}>
+              <div role="button" aria-label="Delete" onClick={() => onDelete(id)}>
               <AiFillDelete size={20} />
-              </Button>
+              </div>
             </Item>
           ))}
       </List>

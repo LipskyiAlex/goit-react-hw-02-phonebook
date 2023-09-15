@@ -34,6 +34,9 @@ code {
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  background-image: url(./images/2.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 /*
   5. Improve media defaults
